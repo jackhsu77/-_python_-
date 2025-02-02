@@ -16,6 +16,8 @@ method = os.environ.get('REQUEST_METHOD')
 path_info = os.environ.get('PATH_INFO', '')
 
 # 簡單路由邏輯
+
+
 def handle_get():
     if path_info == '/api/v1/resource':
         response = {
@@ -26,6 +28,7 @@ def handle_get():
             'error': 'Resource not found'
         }
     return json.dumps(response)
+
 
 def handle_post():
     try:
@@ -42,10 +45,11 @@ def handle_post():
         }
     return json.dumps(response)
 
+
 # 根據請求方法處理
 if method == 'GET':
     print(handle_get())
 elif method == 'POST':
     print(handle_post())
 else:
-    print(json.dumps({'error': 'Method not allowed'}))
+    print(json.dumps({'error': 'Methods not allowed'}))
